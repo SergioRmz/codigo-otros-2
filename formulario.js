@@ -1,26 +1,33 @@
-var formulario = document.querySelector("#form")
+var formulario = document.querySelector(".formulario");
 
 formulario.onsubmit = function(e) {
 
-  e.prevent();
+  //Se corrige el metodo prevent
+  e.preventDefault();
+
+  // Cambio en el nombre de las variables y asociacion con los valores en los inputs
   
-  var n = formulario.elements[0]
-  var e = formulario.elements[1]
-  var na = formulario.elements[2]
+  var nombre = formulario.elements[0].value;
+  var edad = formulario.elements[1].value;
+  var nacionalidad = formulario.elements[2].value;
 
-  var nombre = n.value
-  var edad = e.value
+  // Codigo redundante
+  
+  //var nombre = nacionalidad.value
+  //var edad = e.value
 
-  var i = na.selectedIndex
-  var nacionalidad = na.options[i].value
+ // var i = na.selectedIndex
+  //var nacionalidad = na.options[i].value
   console.log(nombre, edad)
   console.log(nacionalidad)
 
   if (nombre.length === 0) {
-    n.classList.add("error")
+    
+    input.classList.add("error");
   }
   if (edad < 18 || edad > 120) {
-    e.classList.add("error")
+    input2.classList.add("error")
+    
   }
 
 if (nombre.length > 0 
@@ -30,14 +37,17 @@ if (nombre.length > 0
   }
 }
 
-var botonBorrar = document.createElement("button")
-botonBorrar.textContent = "Eliminar invitado"
-botonBorrar.id = "boton-borrar"
-var corteLinea = document.createElement("br")
-document.body.appendChild(corteLinea)
-document.body.appendChild(botonBorrar);
 
 function agregarInvitado(nombre, edad, nacionalidad) {
+//Pasamos la declaracion de las funciones al principio de la funcion
+var lista = document.getElementById("lista-de-invitados");
+var elementoLista = document.createElement("li");
+https://www.xataka.com/robotica-e-ia/ia-ha-generado-nuevo-trabajo-moda-muy-bien-pagado-industria-tecnologica-prompt-engineer
+// Eliminando codigo duplicado.
+
+// var spanNombre = document.createElement("span");
+// var inputNombre = document.createElement("input");
+// var espacio = document.createElement("br");
 
   if (nacionalidad === "ar") {
     nacionalidad = "Argentina"
@@ -52,45 +62,35 @@ function agregarInvitado(nombre, edad, nacionalidad) {
     nacionalidad = "Peruana"
   }
 
-var lista = document.getElementById("lista-de-invitados")
+elementoLista.classList.add("elemento-lista")
 
-var elementoLista = document.createElement("div")
-elementoLista.classList.added("elemento-lista")
 lista.appendChild(elementoLista)
 
-var spanNombre = document.createElement("span")
-var inputNombre = document.createElement("input")
-var espacio = document.createElement("br")
-spanNombre.textContent = "Nombre: "
-inputNombre.value = nombre 
-elementoLista.appendChild(spanNombre)
-elementoLista.appendChild(inputNombre)
-elementoLista.appendChild(espacio)
-
 function crearElemento(descripcion, valor) {
-var spanNombre = document.createElement("span")
-var inputNombre = document.createElement("input")
-var espacio = document.createElement("br")
-spanNombre.textContent = descripcion + ": "
-inputNombre.value = valor 
-elementoLista.appendChild(spanNombre)
-elementoLista.appendChild(inputNombre)
-elementoLista.appendChild(espacio)
+var spanNombre = document.createElement("span");
+var inputNombre = document.createElement("input");
+var espacio = document.createElement("br");
+spanNombre.textContent = descripcion + ": ";
+inputNombre.value = valor ;
+elementoLista.appendChild(spanNombre);
+elementoLista.appendChild(inputNombre);
+elementoLista.appendChild(espacio);
+
 }
 
-crearElemento("Nombre", nombre)
-crearElemento("Edad", edad)
-crearElemento("Nacionalidad", nacionalidad)
-
-
-var botonBorrar = document.createElement("button")
-botonBorrar.textContent = "Eliminar invitado"
-botonBorrar.id = "boton-borrar"
-var corteLinea = document.createElement("br")
-elementoLista.appendChild(corteLinea)
+crearElemento("Nombre", nombre);
+crearElemento("Edad", edad);
+crearElemento("Nacionalidad", nacionalidad);
+var botonBorrar = document.createElement("button");
+botonBorrar.textContent = "Eliminar invitado";
+botonBorrar.id = "boton-borrar";
+var corteLinea = document.createElement("br");
+elementoLista.appendChild(corteLinea);
 elementoLista.appendChild(botonBorrar);
 
- botonBorrar.onclick = function() {
+
+
+botonBorrar.onclick = function() {
 // this.parentNode.style.display = 'none';
 botonBorrar.parentNode.remove()
   }
